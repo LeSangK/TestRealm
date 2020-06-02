@@ -47,6 +47,7 @@ class ViewController: UIViewController ,UITextFieldDelegate{
             try! realm.write{
                 realm.deleteAll()
             }
+        self.table.reloadData()
     }
     
     
