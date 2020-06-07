@@ -7,47 +7,44 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 import RealmSwift
 
 class ViewController: UIViewController ,UITextFieldDelegate{
     
-    //テキストフィールドとテーブルビューを紐付け
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var table: UITableView!
+    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
+    
+    private let disposeBag = DisposeBag()
+    private let realmRepository = RealmRepositoryImp()
     
     var itemList : Results<TodoModel>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let realm = try! Realm()
         
+        self.itemList=realmRepository.fetchTodo()
         
-        self.itemList=realm.objects(TodoModel.self)
-    }
-    
-    @IBAction func addTodo(){
-        let todo :TodoModel = TodoModel()
+        addButton.rx.tap
+            .subscribe(onNext: {[weak self] _ in
+                let todo :TodoModel = TodoModel()
+                todo.text=self?.textField.text
+                self?.realmRepository.addNewTodo(todo: todo)
+                self?.textField.text=""
+                self?.table.reloadData()
+            })
+            .disposed(by: disposeBag)
         
-        todo.text=self.textField.text
-        
-        let  realm = try! Realm()
-        
-        try! realm.write{
-            realm.add(todo)
-        }
-        
-        self.textField.text=""
-        self.table.reloadData()
-    }
-    
-    @IBAction func deleteAll(){
-        let  realm = try! Realm()
-            
-            try! realm.write{
-                realm.deleteAll()
-            }
-        self.table.reloadData()
+        deleteButton.rx.tap
+            .subscribe(onNext: {[weak self]_ in
+                self?.realmRepository.clear()
+                self?.table.reloadData()
+            })
+            .disposed(by: disposeBag)
     }
     
     
@@ -67,13 +64,8 @@ extension ViewController: UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         let item:TodoModel = self.itemList[indexPath.row]
-        let  realm = try! Realm()
-        
-        try! realm.write{
-            realm.delete(item.self)
-        }
-        
+        self.realmRepository.deleteTodo(todo:item.self)
         self.table.reloadData()
-
+        
     }
 }
