@@ -9,6 +9,6 @@
 import Foundation
 import RealmSwift
 
-public class TodoModel: Object{
-  @objc dynamic var text: String? = nil
+public class TodoModel: Object {
+    @objc dynamic var text: String?
 }

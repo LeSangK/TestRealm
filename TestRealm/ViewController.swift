@@ -11,44 +11,55 @@ import RxSwift
 import RxCocoa
 import RealmSwift
 
-class ViewController: UIViewController ,UITextFieldDelegate{
-    
+class ViewController: UIViewController, UITextFieldDelegate {
+
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
-    
+    @IBOutlet weak var scanButton: UIButton!
+
     private let disposeBag = DisposeBag()
     private let realmRepository = RealmRepositoryImp()
-    
-    var itemList : Results<TodoModel>!
-    
+
+    var itemList: Results<TodoModel>!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+
         self.itemList=realmRepository.fetchTodo()
-        
+        self.table.reloadData()
+
         addButton.rx.tap
             .subscribe(onNext: {[weak self] _ in
-                let todo :TodoModel = TodoModel()
+                let todo: TodoModel = TodoModel()
                 todo.text=self?.textField.text
                 self?.realmRepository.addNewTodo(todo: todo)
                 self?.textField.text=""
                 self?.table.reloadData()
             })
             .disposed(by: disposeBag)
-        
+
         deleteButton.rx.tap
             .subscribe(onNext: {[weak self]_ in
                 self?.realmRepository.clear()
                 self?.table.reloadData()
             })
             .disposed(by: disposeBag)
+
+        scanButton.rx.tap
+            .subscribe(onNext: {[weak self]_ in
+                let QRScanner = self?.storyboard?.instantiateViewController(withIdentifier: "QRScannerController")
+                //ここが実際に移動するコードとなります
+                self?.present(QRScanner!, animated: true, completion: nil)            })
+            .disposed(by: disposeBag)
+
     }
-    
-    
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.table.reloadData()
+    }
 }
 
 extension ViewController: UITableViewDataSource {
@@ -56,16 +67,15 @@ extension ViewController: UITableViewDataSource {
         return self.itemList.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "lastCell", for: indexPath)
-        
-        let item:TodoModel = self.itemList[indexPath.row]
+        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "lastCell", for: indexPath)
+
+        let item: TodoModel = self.itemList[indexPath.row]
         cell.textLabel?.text=item.text
         return cell
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        let item:TodoModel = self.itemList[indexPath.row]
-        self.realmRepository.deleteTodo(todo:item.self)
+        let item: TodoModel = self.itemList[indexPath.row]
+        self.realmRepository.deleteTodo(todo: item.self)
         self.table.reloadData()
-        
     }
 }
