@@ -8,16 +8,20 @@
 
 import UIKit
 import AVFoundation
+import RxSwift
+import RxCocoa
 
 class QRScannerController: UIViewController {
 
     @IBOutlet var messageLabel: UILabel!
+    @IBOutlet var cancelButton: UIButton!
 
     var captureSession = AVCaptureSession()
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var qrCodeFrameView: UIView?
-    
+
     private let realmRepository = RealmRepositoryImp()
+    private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +65,7 @@ class QRScannerController: UIViewController {
 
         // Move the message label and top bar to the front
         view.bringSubviewToFront(messageLabel)
+        view.bringSubviewToFront(cancelButton)
 
         // Initialize QR Code Frame to highlight the QR code
         qrCodeFrameView = UIView()
@@ -71,6 +76,14 @@ class QRScannerController: UIViewController {
             view.addSubview(qrCodeFrameView)
             view.bringSubviewToFront(qrCodeFrameView)
         }
+
+        //キャンセルボタン
+        cancelButton.rx.tap
+            .subscribe(onNext: {[self]_ in
+                self.dismiss(animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -142,6 +155,7 @@ class QRScannerController: UIViewController {
 
 }
 
+// MARK: - MetadataOutput
 extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
 
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
@@ -161,10 +175,13 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
             qrCodeFrameView?.frame = barCodeObject!.bounds
 
-            if metadataObj.stringValue != nil {
-                launchApp(decodedURL: metadataObj.stringValue!)
-                messageLabel.text = metadataObj.stringValue
+            guard let resultString=metadataObj.stringValue else {
+                return
             }
+            let readQRResultService=ReadQRResultServiceImp(result: resultString)
+            let ressult=readQRResultService.readQRResultHandler()
+            messageLabel.text = ressult.clientId
+
         }
     }
 }

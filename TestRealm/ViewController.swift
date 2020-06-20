@@ -51,14 +51,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         scanButton.rx.tap
             .subscribe(onNext: {[weak self]_ in
                 let QRScanner = self?.storyboard?.instantiateViewController(withIdentifier: "QRScannerController")
+                QRScanner?.modalPresentationStyle = .fullScreen
                 //ここが実際に移動するコードとなります
                 self?.present(QRScanner!, animated: true, completion: nil)            })
             .disposed(by: disposeBag)
 
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.table.reloadData()
     }
 }
 

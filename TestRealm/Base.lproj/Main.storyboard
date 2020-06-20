@@ -118,8 +118,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Qu-SD-iqq">
+                                <rect key="frame" x="0.0" y="782" width="414" height="60"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="Cancel"/>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No QR code is detected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gX3-Wi-wMx">
-                                <rect key="frame" x="0.0" y="822" width="414" height="40"/>
+                                <rect key="frame" x="0.0" y="734" width="414" height="40"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="5mZ-9T-Yhw"/>
@@ -132,14 +138,18 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="gX3-Wi-wMx" firstAttribute="bottom" secondItem="ktm-pe-d0t" secondAttribute="bottom" id="W38-5u-wFM"/>
-                            <constraint firstItem="gX3-Wi-wMx" firstAttribute="leading" secondItem="ktm-pe-d0t" secondAttribute="leading" id="Yho-nV-GpJ"/>
-                            <constraint firstItem="gX3-Wi-wMx" firstAttribute="trailing" secondItem="ktm-pe-d0t" secondAttribute="trailing" id="jmh-Ih-1u7"/>
+                            <constraint firstItem="gX3-Wi-wMx" firstAttribute="trailing" secondItem="ktm-pe-d0t" secondAttribute="trailing" id="IEH-fh-EFb"/>
+                            <constraint firstItem="ktm-pe-d0t" firstAttribute="bottom" secondItem="5Qu-SD-iqq" secondAttribute="bottom" constant="20" id="KmM-C4-8KC"/>
+                            <constraint firstItem="5Qu-SD-iqq" firstAttribute="top" secondItem="gX3-Wi-wMx" secondAttribute="bottom" constant="8" id="Str-yi-ADP"/>
+                            <constraint firstAttribute="trailing" secondItem="5Qu-SD-iqq" secondAttribute="trailing" id="c5F-aK-6fg"/>
+                            <constraint firstItem="5Qu-SD-iqq" firstAttribute="leading" secondItem="ktm-pe-d0t" secondAttribute="leading" id="i6I-SG-9kp"/>
+                            <constraint firstItem="gX3-Wi-wMx" firstAttribute="leading" secondItem="ktm-pe-d0t" secondAttribute="leading" id="tLI-Hu-Oxz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ktm-pe-d0t"/>
                     </view>
                     <navigationItem key="navigationItem" id="8uY-2O-9ie"/>
                     <connections>
+                        <outlet property="cancelButton" destination="5Qu-SD-iqq" id="4iK-h0-6FR"/>
                         <outlet property="messageLabel" destination="gX3-Wi-wMx" id="MAx-bT-taB"/>
                     </connections>
                 </viewController>

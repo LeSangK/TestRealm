@@ -28,6 +28,8 @@
 		3373526624822C3F00DB15B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3373526424822C3F00DB15B6 /* LaunchScreen.storyboard */; };
 		3373527124822C3F00DB15B6 /* TestRealmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3373527024822C3F00DB15B6 /* TestRealmTests.swift */; };
 		3373527C24822C4000DB15B6 /* TestRealmUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3373527B24822C4000DB15B6 /* TestRealmUITests.swift */; };
+		652A208E249C80A8008E922F /* ReadQRCodeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A208D249C80A8008E922F /* ReadQRCodeResult.swift */; };
+		652A2090249C9FEF008E922F /* ReadQRCodeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A208F249C9FEF008E922F /* ReadQRCodeService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,8 @@
 		3373527724822C4000DB15B6 /* TestRealmUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestRealmUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3373527B24822C4000DB15B6 /* TestRealmUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRealmUITests.swift; sourceTree = "<group>"; };
 		3373527D24822C4000DB15B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		652A208D249C80A8008E922F /* ReadQRCodeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadQRCodeResult.swift; sourceTree = "<group>"; };
+		652A208F249C9FEF008E922F /* ReadQRCodeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadQRCodeService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +170,8 @@
 				3373526724822C3F00DB15B6 /* Info.plist */,
 				3330FD64248648E90057B326 /* TodoModel.swift */,
 				3330FD6F248C854D0057B326 /* RealmRepository.swift */,
+				652A208D249C80A8008E922F /* ReadQRCodeResult.swift */,
+				652A208F249C9FEF008E922F /* ReadQRCodeService.swift */,
 			);
 			path = TestRealm;
 			sourceTree = "<group>";
@@ -369,7 +375,9 @@
 				3330FD65248648E90057B326 /* TodoModel.swift in Sources */,
 				3373525A24822C3E00DB15B6 /* AppDelegate.swift in Sources */,
 				3373525C24822C3E00DB15B6 /* SceneDelegate.swift in Sources */,
+				652A2090249C9FEF008E922F /* ReadQRCodeService.swift in Sources */,
 				3330FD78248D14950057B326 /* QRScannerController.swift in Sources */,
+				652A208E249C80A8008E922F /* ReadQRCodeResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
