@@ -190,6 +190,7 @@
 		3350141024A08EC400E626E0 /* TodoDataStore */ = {
 			isa = PBXGroup;
 			children = (
+				3330FD64248648E90057B326 /* TodoModel.swift */,
 				3330FD6F248C854D0057B326 /* TodoDataStore.swift */,
 			);
 			path = TodoDataStore;
@@ -255,7 +256,6 @@
 				336D2A50249DB28D00FB0834 /* Repository */,
 				336D2A4F249DB27300FB0834 /* Service */,
 				3373525924822C3E00DB15B6 /* AppDelegate.swift */,
-				3330FD64248648E90057B326 /* TodoModel.swift */,
 				3373525B24822C3E00DB15B6 /* SceneDelegate.swift */,
 				3373525F24822C3E00DB15B6 /* Main.storyboard */,
 				3373526224822C3F00DB15B6 /* Assets.xcassets */,

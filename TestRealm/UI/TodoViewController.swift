@@ -29,7 +29,7 @@ class TodoViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        //Replace me when SwinjectStoryboard imported
         todoAction = TodoActionImp(repository: todoRepository)
         viewModel = TodoViewModel(todoAction: todoAction!)
 
@@ -68,7 +68,6 @@ class TodoViewController: UIViewController, UITextFieldDelegate {
             .subscribe(onNext: {[weak self]_ in
                 let QRScanner = self?.storyboard?.instantiateViewController(withIdentifier: "QRScannerController")
                 QRScanner?.modalPresentationStyle = .fullScreen
-                //ここが実際に移動するコードとなります
                 self?.present(QRScanner!, animated: true, completion: nil)            })
             .disposed(by: disposeBag)
 

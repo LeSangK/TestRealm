@@ -16,7 +16,13 @@ class QRScannerViewModel: BaseViewModel {
     init(readQRCode: ReadQRCode) {
         self.readQRCode=readQRCode
     }
-    //    (completionHandler: @escaping (ReadNfcResult) -> Void)
+
+    ///startReadQRCode
+    ///
+    ///- Parameters
+    ///  - resultString  : metaOutput valueString
+    ///  - errorCode :   ok, fail, noQrCode, notSupport, cancel
+
     func startReadQRCode(resultString: String?, errorCode: ReadQRResultCode?) {
         readQRCode.setPrestenter(presenter: self)
         readQRCode.startReadQRResult(resultString: resultString, errorCode: errorCode)

@@ -9,7 +9,9 @@
 import Foundation
 
 public protocol ReadQRCodePresenter {
-    //notify UI the result of QR
+    ///Notify UI the result of QR
+    ///
+    /// - Parameters:
+    ///   - code:ResultCode from QRCode Service
     func notifyQRCodeResult(code: ReadQRResultCode)
-
 }

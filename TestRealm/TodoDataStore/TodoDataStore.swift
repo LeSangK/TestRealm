@@ -9,17 +9,17 @@
 import Foundation
 import RealmSwift
 
-public protocol TodoDataStore {
+protocol TodoDataStore {
     func fetchTodo()->Results<TodoModel>?
     func addNewTodo(todo: TodoModel)
     func deleteTodo(todo: TodoModel)
     func clear()
 }
 
-public class TodoDataStoreImp: TodoDataStore {
+class TodoDataStoreImp: TodoDataStore {
     init() {}
 
-    public func fetchTodo() -> Results<TodoModel>? {
+    func fetchTodo() -> Results<TodoModel>? {
         do {
             let realm = try Realm()
             return realm.objects(TodoModel.self)
@@ -30,7 +30,7 @@ public class TodoDataStoreImp: TodoDataStore {
 
     }
 
-    public func addNewTodo(todo: TodoModel) {
+    func addNewTodo(todo: TodoModel) {
         do {
             let realm = try Realm()
             try realm.write {
@@ -41,7 +41,7 @@ public class TodoDataStoreImp: TodoDataStore {
         }
     }
 
-    public func clear() {
+    func clear() {
         do {
             let realm = try Realm()
             try realm.write {
@@ -52,7 +52,7 @@ public class TodoDataStoreImp: TodoDataStore {
         }
     }
 
-    public func deleteTodo(todo: TodoModel) {
+    func deleteTodo(todo: TodoModel) {
         do {
             let realm = try Realm()
             try realm.write {

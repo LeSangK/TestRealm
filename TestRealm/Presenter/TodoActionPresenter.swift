@@ -9,12 +9,15 @@
 import Foundation
 
 public protocol TodoActionPresenter {
-    ///notify UI FetchTodos  Completed
+    ///Notify UI FetchTodos  Completed
+    ///
+    ///- Parameters:
+    ///  - results: Fetching  from database
     func notifyFetchTodos(results: [String])
 
-    ///notify UI to reload tabelView
+    ///Notify UI to reload tabelView
     func notfyReloadTable()
 
-    ///notify UI to reset textField
+    ///Notify UI to reset textField
     func notifyResetTextField()
 }

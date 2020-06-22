@@ -34,9 +34,6 @@ class QRScannerController: UIViewController {
         readQRCode=ReadQRCodeImp(repository: readQRCodeRepository, service: readQRResultService )
         viewModel=QRScannerViewModel(readQRCode: readQRCode!)
 
-        //カメラを初期化
-        self.initlizeCamera()
-
         viewModel?.navigation
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: {[weak self] event in
@@ -47,7 +44,7 @@ class QRScannerController: UIViewController {
                     // swiftlint:disable:next force_cast
                     let parentVC = self?.presentingViewController as! TodoViewController
                     parentVC.table.reloadData()
-                    self?.presentingViewController?.dismiss(animated: true, completion: nil)
+                    self?.dismiss(animated: true, completion: nil)
                 case _ as QRScannerViewModel.QRScannerCancel:
                     self?.dismiss(animated: true, completion: nil)
                 case let event as QRScannerViewModel.ShowMessage:
@@ -64,6 +61,9 @@ class QRScannerController: UIViewController {
                 self.viewModel?.startReadQRCode(resultString: nil, errorCode: .cancel)
             })
             .disposed(by: disposeBag)
+
+        //カメラを初期化
+        self.initlizeCamera()
 
     }
 

@@ -9,16 +9,24 @@
 import Foundation
 
 public protocol TodoRepository {
-    //fetchTodos
+    ///fetch Todos from database
+    ///
+    /// - Returns: String Array
     func fetchTodos() -> [String]!
 
-    //addNewTodo
+    ///Add  NewTodo to database
+    ///
+    /// - Parameters:
+    ///   - str: string  will add to Database
     func addNewTodo(str: String?)
 
-    //deleteTodo
+    ///DeleteTodo from database
+    ///
+    ///- Parameters:
+    ///   - index : index of table rows
     func deleteTodo(index: Int)
 
-    //clear
+    ///Clear all of data of database
     func deleteAll()
 }
 

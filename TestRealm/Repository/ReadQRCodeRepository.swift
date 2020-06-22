@@ -9,7 +9,10 @@
 import Foundation
 
 public protocol ReadQRCodeRepository {
-    //add QRCode result to realm
+    ///Add QRCode result to realm
+    ///
+    /// - Parameters:
+    ///   - result : The result from QRCode Service
     func addNewTodo(result: ReadQRResult)
 }
 
@@ -23,7 +26,7 @@ public class ReadQRCodeRepositoryImp: ReadQRCodeRepository {
     public func addNewTodo(result: ReadQRResult) {
         if result.resultCode == .ok {
             let todo = TodoModel()
-            todo.text="companyId\(result.companyId), siteId:\(result.siteId), clinetId\(result.clientId)"
+            todo.text="companyId:\(result.companyId), siteId:\(result.siteId), clinetId:\(result.clientId)"
             todoDataStore.addNewTodo(todo: todo)
         }
     }
