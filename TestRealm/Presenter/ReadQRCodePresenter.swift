@@ -11,4 +11,5 @@ import Foundation
 public protocol ReadQRCodePresenter {
     //notify UI the result of QR
     func notifyQRCodeResult(code: ReadQRResultCode)
+
 }

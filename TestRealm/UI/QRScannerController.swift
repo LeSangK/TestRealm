@@ -20,8 +20,8 @@ class QRScannerController: UIViewController {
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var qrCodeFrameView: UIView?
 
-    private let realmRepository = RealmRepositoryImp()
-    private let readQRResultService=ReadQRResultServiceImp()
+    private let readQRCodeRepository = ReadQRCodeRepositoryImp()
+    private let readQRResultService = ReadQRResultServiceImp()
     private let disposeBag = DisposeBag()
 
     public var readQRCode: ReadQRCode?
@@ -31,21 +31,21 @@ class QRScannerController: UIViewController {
         super.viewDidLoad()
 
         //Replace me when SwinjectStoryboard imported
-        readQRCode=ReadQRCodeImp(repository: realmRepository, service: readQRResultService )
+        readQRCode=ReadQRCodeImp(repository: readQRCodeRepository, service: readQRResultService )
         viewModel=QRScannerViewModel(readQRCode: readQRCode!)
 
         //カメラを初期化
         self.initlizeCamera()
 
         viewModel?.navigation
-            .observeOn(MainScheduler.init())
+            .observeOn(MainScheduler.instance)
             .subscribe(onNext: {[weak self] event in
                 switch event {
                 case _ as QRScannerViewModel.QRScannerComplete:
                     // stop the captureSession when qrReading success
                     self?.captureSession.stopRunning()
                     // swiftlint:disable:next force_cast
-                    let parentVC = self?.presentingViewController as! ViewController
+                    let parentVC = self?.presentingViewController as! TodoViewController
                     parentVC.table.reloadData()
                     self?.presentingViewController?.dismiss(animated: true, completion: nil)
                 case _ as QRScannerViewModel.QRScannerCancel:

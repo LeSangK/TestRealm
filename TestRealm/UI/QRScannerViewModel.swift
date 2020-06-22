@@ -10,12 +10,6 @@ import Foundation
 import AVFoundation
 import RxRelay
 
-protocol ViewModelEvent {}
-
-class BaseViewModel {
-    let navigation = PublishRelay<ViewModelEvent>()
-}
-
 class QRScannerViewModel: BaseViewModel {
     private let readQRCode: ReadQRCode
 
