@@ -11,7 +11,7 @@ import RealmSwift
 
 public protocol RealmRepository {
     func fetchTodo()->Results<TodoModel>!
-    func addNewTodo(todo: TodoModel)
+    func addNewTodo(str: String)
     func deleteTodo(todo: TodoModel)
     func clear()
 }
@@ -29,7 +29,9 @@ public class RealmRepositoryImp: RealmRepository {
         return self.realm.objects(TodoModel.self)
     }
 
-    public func addNewTodo(todo: TodoModel) {
+    public func addNewTodo(str: String) {
+        let todo: TodoModel = TodoModel()
+        todo.text=str
         // swiftlint:disable:next force_try
         try! realm.write {
             self.realm.add(todo)

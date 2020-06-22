@@ -33,9 +33,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
         addButton.rx.tap
             .subscribe(onNext: {[weak self] _ in
-                let todo: TodoModel = TodoModel()
-                todo.text=self?.textField.text
-                self?.realmRepository.addNewTodo(todo: todo)
+                guard let text = self?.textField.text else {
+                    return
+                }
+                self?.realmRepository.addNewTodo(str: text)
                 self?.textField.text=""
                 self?.table.reloadData()
             })

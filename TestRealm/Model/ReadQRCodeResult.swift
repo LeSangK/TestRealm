@@ -11,6 +11,9 @@ import Foundation
 public enum ReadQRResultCode: CaseIterable {
     case ok
     case fail
+    case noQrCode
+    case notSupport
+    case cancel
 }
 
 public class ReadQRResult {
@@ -25,7 +28,7 @@ public class ReadQRResult {
     /// クライアントシークレット
     public let clientSecret: String
 
-    /// NFCの読み込み結果に関する情報を保持するクラスを初期化する
+    /// QRリーダーの読み込み結果に関する情報を保持するクラスを初期化する
     ///
     /// - Parameters:
     ///   - code: エラーコード
