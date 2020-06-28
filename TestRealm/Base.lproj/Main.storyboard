@@ -28,10 +28,6 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="0v3-Fn-tk5"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="5o2-F8-ec8"/>
-                                </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Todo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WD7-cF-ptj">
                                 <rect key="frame" x="20" y="45" width="59.5" height="33.5"/>
