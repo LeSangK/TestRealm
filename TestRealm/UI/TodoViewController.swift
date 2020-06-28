@@ -25,7 +25,7 @@ class TodoViewController: UIViewController, UITextFieldDelegate {
     public var todoAction: TodoAction?
     var viewModel: TodoViewModel?
 
-    var itemList: [String]?
+    var itemList: Observable<[String]>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,28 +78,11 @@ class TodoViewController: UIViewController, UITextFieldDelegate {
         viewModel?.handleTodoAction(action: .fetch, parameter: nil)
     }
 
-    func initalizeTable(event: TodoViewModel.FetchTodosSuccess) {
-        self.itemList = event.todos
-        table.reloadData()
-    }
-}
-
-extension TodoViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard self.itemList != nil else {
-            return 0
+    func initalizeTable(event: TodoViewModel.FetchTodosSuccess ) {
+        self.itemList = Observable.from(optional: event.todos)
+        self.itemList?.bind(to: table.rx.items(cellIdentifier: "lastCell")) { _, element, cell in
+            cell.textLabel?.text = element
         }
-        return self.itemList!.count
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "lastCell", for: indexPath)
-
-        cell.textLabel?.text=self.itemList![indexPath.row]
-        return cell
-    }
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-
-        self.viewModel?.handleTodoAction(action: .delete, parameter: indexPath.row)
-        self.table.reloadData()
+        .disposed(by: disposeBag)
     }
 }
