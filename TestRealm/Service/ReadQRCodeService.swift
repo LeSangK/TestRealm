@@ -25,6 +25,7 @@ public protocol ReadQRResultService {
 public class ReadQRResultServiceImp: ReadQRResultService {
     init() {}
 
+    ///The  Sturcture  to decode raw json from metaOutput
     struct QRResult: Codable {
         let companyId: String
         let siteId: String
