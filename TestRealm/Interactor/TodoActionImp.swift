@@ -24,17 +24,17 @@ public class TodoActionImp: TodoAction {
     public func addNewTodo(str: String?) {
         repository.addNewTodo(str: str)
         presenter?.notifyResetTextField()
-        presenter?.notfyReloadTable()
+        presenter?.notifyReloadTable()
     }
 
     public func deleteTodo(index: Int) {
         repository.deleteTodo(index: index)
-        presenter?.notfyReloadTable()
+        presenter?.notifyReloadTable()
     }
 
     public func deleteAll() {
         repository.deleteAll()
-        presenter?.notfyReloadTable()
+        presenter?.notifyReloadTable()
     }
 
     public func setPresenter(presenter: TodoActionPresenter) {

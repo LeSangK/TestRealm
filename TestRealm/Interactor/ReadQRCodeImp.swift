@@ -26,7 +26,7 @@ public class ReadQRCodeImp: ReadQRCode {
         presenter?.notifyQRCodeResult(code: result.resultCode)
     }
 
-    public func setPrestenter(presenter: ReadQRCodePresenter) {
+    public func setPresenter(presenter: ReadQRCodePresenter) {
         self.presenter=presenter
     }
 

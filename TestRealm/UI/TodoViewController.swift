@@ -38,7 +38,7 @@ class TodoViewController: UIViewController, UITextFieldDelegate {
             .subscribe(onNext: { [weak self] event in
                 switch event {
                 case let event  as TodoViewModel.FetchTodosSuccess:
-                    self?.initalizeTable(event: event)
+                    self?.initializeTable(event: event)
                 case _ as TodoViewModel.ReloadTable:
                     self?.viewModel?.handleTodoAction(action: .fetch, parameter: nil)
                 case _ as TodoViewModel.ResetTextField:
@@ -78,7 +78,7 @@ class TodoViewController: UIViewController, UITextFieldDelegate {
         viewModel?.handleTodoAction(action: .fetch, parameter: nil)
     }
 
-    func initalizeTable(event: TodoViewModel.FetchTodosSuccess ) {
+    func initializeTable(event: TodoViewModel.FetchTodosSuccess ) {
         self.itemList = Observable.from(optional: event.todos)
         self.itemList?.bind(to: table.rx.items(cellIdentifier: "lastCell")) { _, element, cell in
             cell.textLabel?.text = element

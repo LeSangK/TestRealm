@@ -41,7 +41,7 @@ class TodoViewModel: BaseViewModel {
 }
 
 extension TodoViewModel: TodoActionPresenter {
-    func notfyReloadTable() {
+    func notifyReloadTable() {
         self.navigation.accept(ReloadTable())
     }
 

@@ -23,7 +23,7 @@ class QRScannerViewModel: BaseViewModel {
     ///  - resultString :metaOutput valueString
     ///  - errorCode : ok, fail, noQrCode, notSupport, cancel
     func startReadQRCode(resultString: String?, errorCode: ReadQRResultCode?) {
-        readQRCode.setPrestenter(presenter: self)
+        readQRCode.setPresenter(presenter: self)
         readQRCode.startReadQRResult(resultString: resultString, errorCode: errorCode)
     }
 

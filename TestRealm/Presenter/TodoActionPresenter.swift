@@ -16,7 +16,7 @@ public protocol TodoActionPresenter {
     func notifyFetchTodos(results: [String])
 
     ///Notify UI to reload tabelView
-    func notfyReloadTable()
+    func notifyReloadTable()
 
     ///Notify UI to reset textField
     func notifyResetTextField()

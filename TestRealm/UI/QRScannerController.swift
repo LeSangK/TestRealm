@@ -48,7 +48,7 @@ class QRScannerController: UIViewController {
                 case _ as QRScannerViewModel.QRScannerCancel:
                     self?.dismiss(animated: true, completion: nil)
                 case let event as QRScannerViewModel.ShowMessage:
-                    self?.showMessga(event: event)
+                    self?.showMessage(event: event)
                 default:
                     break
                 }
@@ -63,13 +63,13 @@ class QRScannerController: UIViewController {
             .disposed(by: disposeBag)
 
         //カメラを初期化
-        self.initlizeCamera()
+        self.initializeCamera()
 
     }
 
     // MARK: - Helper methods
 
-    func showMessga(event: QRScannerViewModel.ShowMessage) {
+    func showMessage(event: QRScannerViewModel.ShowMessage) {
         self.messageLabel.text=event.message
     }
 
@@ -108,7 +108,7 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
 // MARK: - CameraViewInitializer
 extension QRScannerController {
 
-    func initlizeCamera() {
+    func initializeCamera() {
         // Get the back-facing camera for capturing videos
         guard let captureDevice = AVCaptureDevice.default(for: AVMediaType.video) else {
             viewModel?.startReadQRCode(resultString: nil, errorCode: .notSupport)
