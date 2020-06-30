@@ -40,7 +40,6 @@
 		3373527124822C3F00DB15B6 /* TestRealmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3373527024822C3F00DB15B6 /* TestRealmTests.swift */; };
 		3373527C24822C4000DB15B6 /* TestRealmUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3373527B24822C4000DB15B6 /* TestRealmUITests.swift */; };
 		652A208E249C80A8008E922F /* ReadQRCodeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A208D249C80A8008E922F /* ReadQRCodeResult.swift */; };
-		652A2090249C9FEF008E922F /* ReadQRCodeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A208F249C9FEF008E922F /* ReadQRCodeService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,7 +112,6 @@
 		3373527B24822C4000DB15B6 /* TestRealmUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRealmUITests.swift; sourceTree = "<group>"; };
 		3373527D24822C4000DB15B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		652A208D249C80A8008E922F /* ReadQRCodeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadQRCodeResult.swift; sourceTree = "<group>"; };
-		652A208F249C9FEF008E922F /* ReadQRCodeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadQRCodeService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,14 +194,6 @@
 			path = TodoDataStore;
 			sourceTree = "<group>";
 		};
-		336D2A4F249DB27300FB0834 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				652A208F249C9FEF008E922F /* ReadQRCodeService.swift */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
 		336D2A50249DB28D00FB0834 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,7 +244,6 @@
 				33501406249EFECA00E626E0 /* Model */,
 				336D2A51249DB2AD00FB0834 /* Interactor */,
 				336D2A50249DB28D00FB0834 /* Repository */,
-				336D2A4F249DB27300FB0834 /* Service */,
 				3373525924822C3E00DB15B6 /* AppDelegate.swift */,
 				3373525B24822C3E00DB15B6 /* SceneDelegate.swift */,
 				3373525F24822C3E00DB15B6 /* Main.storyboard */,
@@ -471,7 +460,6 @@
 				3350140E24A06FE300E626E0 /* ReadQRCodeImp.swift in Sources */,
 				3350140A24A0591700E626E0 /* ReadQRCodePresenter.swift in Sources */,
 				3373525C24822C3E00DB15B6 /* SceneDelegate.swift in Sources */,
-				652A2090249C9FEF008E922F /* ReadQRCodeService.swift in Sources */,
 				3350141624A093D200E626E0 /* BaseViewModel.swift in Sources */,
 				3330FD78248D14950057B326 /* QRScannerController.swift in Sources */,
 				3350141424A093AB00E626E0 /* TodoViewModel.swift in Sources */,

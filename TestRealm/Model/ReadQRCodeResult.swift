@@ -44,3 +44,11 @@ public class ReadQRResult {
         self.clientSecret = clientSecret
     }
 }
+
+///The  Structure  to decode raw json from metaOutput
+public struct QRResult: Codable {
+    let companyId: String
+    let siteId: String
+    let clientId: String
+    let clientSecret: String
+}

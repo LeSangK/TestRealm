@@ -14,7 +14,7 @@ public protocol ReadQRCode {
     /// - Parameters:
     ///   - readQRResult: The Result from ReadQRCodeService
 
-    func startReadQRResult(resultString: String?, errorCode: ReadQRResultCode?)
+    func startReadQRResult(readQRResult: ReadQRResult)
 
     func setPresenter(presenter: ReadQRCodePresenter)
 }

@@ -21,7 +21,6 @@ class QRScannerController: UIViewController {
     var qrCodeFrameView: UIView?
 
     private let readQRCodeRepository = ReadQRCodeRepositoryImp()
-    private let readQRResultService = ReadQRResultServiceImp()
     private let disposeBag = DisposeBag()
 
     public var readQRCode: ReadQRCode?
@@ -31,7 +30,7 @@ class QRScannerController: UIViewController {
         super.viewDidLoad()
 
         //Replace me when SwinjectStoryboard imported
-        readQRCode=ReadQRCodeImp(repository: readQRCodeRepository, service: readQRResultService )
+        readQRCode=ReadQRCodeImp(repository: readQRCodeRepository)
         viewModel=QRScannerViewModel(readQRCode: readQRCode!)
 
         viewModel?.navigation
@@ -57,8 +56,9 @@ class QRScannerController: UIViewController {
 
         //キャンセルボタン
         cancelButton.rx.tap
-            .subscribe(onNext: {[self]_ in
-                self.viewModel?.startReadQRCode(resultString: nil, errorCode: .cancel)
+            .subscribe(onNext: {[weak self]_ in
+                let readQRResult = self?.QRResultHandler(resultString: nil, errorCode: .cancel)
+                self?.viewModel?.startReadQRCode(readQRResult: readQRResult!)
             })
             .disposed(by: disposeBag)
 
@@ -73,6 +73,33 @@ class QRScannerController: UIViewController {
         self.messageLabel.text=event.message
     }
 
+    func QRResultHandler(resultString: String?, errorCode: ReadQRResultCode?) -> ReadQRResult {
+
+        guard errorCode != .cancel else {
+            return ReadQRResult(resultCode: ReadQRResultCode.cancel, companyId: "", siteId: "", clientId: "", clientSecret: "")
+        }
+
+        guard errorCode != .notSupport else {
+            return ReadQRResult(resultCode: ReadQRResultCode.notSupport, companyId: "", siteId: "", clientId: "", clientSecret: "")
+        }
+
+        guard errorCode != .noQrCode else {
+            return ReadQRResult(resultCode: ReadQRResultCode.noQrCode, companyId: "", siteId: "", clientId: "", clientSecret: "")
+        }
+
+        do {
+            let jsonDecoder = JSONDecoder()
+
+            let result = try jsonDecoder.decode(QRResult.self, from: resultString!.data(using: .utf8)!)
+
+            return ReadQRResult(resultCode: ReadQRResultCode.ok, companyId: result.companyId, siteId: result.siteId, clientId: result.clientId, clientSecret: result.clientSecret)
+
+        } catch {
+            print(error)
+            return ReadQRResult(resultCode: ReadQRResultCode.fail, companyId: "", siteId: "", clientId: "", clientSecret: "")
+        }
+    }
+
 }
 
 // MARK: - MetadataOutput
@@ -82,7 +109,8 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
         // Check if the metadataObjects array is not nil and it contains at least one object.
         if metadataObjects.count == 0 {
             qrCodeFrameView?.frame = CGRect.zero
-            viewModel?.startReadQRCode(resultString: nil, errorCode: .noQrCode)
+            let readQRResult = QRResultHandler(resultString: nil, errorCode: .noQrCode)
+            viewModel?.startReadQRCode(readQRResult: readQRResult)
             return
         }
 
@@ -95,11 +123,9 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
             qrCodeFrameView?.frame = barCodeObject!.bounds
 
-            guard let resultString=metadataObj.stringValue else {
-                return
-            }
+            let readQRResult = QRResultHandler(resultString: metadataObj.stringValue, errorCode: .ok)
 
-            viewModel?.startReadQRCode(resultString: resultString, errorCode: nil)
+            viewModel?.startReadQRCode(readQRResult: readQRResult)
         }
 
     }
@@ -111,7 +137,8 @@ extension QRScannerController {
     func initializeCamera() {
         // Get the back-facing camera for capturing videos
         guard let captureDevice = AVCaptureDevice.default(for: AVMediaType.video) else {
-            viewModel?.startReadQRCode(resultString: nil, errorCode: .notSupport)
+            let readQRResult = QRResultHandler(resultString: nil, errorCode: .notSupport)
+            viewModel?.startReadQRCode(readQRResult: readQRResult)
             return
         }
 
