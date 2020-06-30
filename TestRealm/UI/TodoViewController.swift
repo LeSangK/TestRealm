@@ -71,6 +71,12 @@ class TodoViewController: UIViewController, UITextFieldDelegate {
                 self?.present(QRScanner!, animated: true, completion: nil)            })
             .disposed(by: disposeBag)
 
+        table.rx.itemDeleted
+            .subscribe(onNext: {[weak self] in
+                self?.viewModel?.handleTodoAction(action: .delete, parameter: $0.row)
+            })
+            .disposed(by: disposeBag)
+
     }
 
     override func viewDidAppear(_ animated: Bool) {
