@@ -278,9 +278,9 @@
 		3373526F24822C3F00DB15B6 /* TestRealmTests */ = {
 			isa = PBXGroup;
 			children = (
-				33FDD31724B0B0BB00FCBF89 /* GeneratedMocks.swift */,
 				33FDD30D24B0A50100FCBF89 /* Repository */,
 				3373527224822C3F00DB15B6 /* Info.plist */,
+				33FDD31724B0B0BB00FCBF89 /* GeneratedMocks.swift */,
 			);
 			path = TestRealmTests;
 			sourceTree = "<group>";
