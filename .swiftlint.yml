@@ -1,5 +1,11 @@
 excluded:
   - Carthage
+  - TestRealmTests/GeneratedMocks.swift 
+
+identifier_name:
+  min_length:
+    warning: 1
+    error: 1
 
 
 line_length: #max length of each line

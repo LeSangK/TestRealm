@@ -1,5 +1,8 @@
 # Carthage
-/Carthage
+Carthage/Build
+Carthage/Checkouts
+
+**/GeneratedMocks.swift
 
 #.DS_Store
 .DS_Store
