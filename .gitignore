@@ -2,6 +2,9 @@
 Carthage/Build
 Carthage/Checkouts
 
+# build
+build
+
 **/GeneratedMocks.swift
 
 #.DS_Store

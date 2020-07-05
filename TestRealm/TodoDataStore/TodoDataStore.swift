@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-public protocol TodoDataStore {
+protocol TodoDataStore {
     func fetchTodo()->Results<TodoModel>?
     func addNewTodo(todo: TodoModel)
     func deleteTodo(todo: TodoModel)
