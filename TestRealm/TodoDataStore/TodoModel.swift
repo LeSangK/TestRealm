@@ -10,5 +10,5 @@ import Foundation
 import RealmSwift
 
 class TodoModel: Object {
-    @objc dynamic var text: String?
+    @objc dynamic var text: String = ""
 }

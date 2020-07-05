@@ -44,16 +44,16 @@ class TodoRepositoryImp: TodoRepository {
 
         var array = [String]()
         for index in 0 ..< results.count {
-            if let result = results[index].text {
-                array.append(result)
-            }
+            let result = results[index].text
+            array.append(result)
+
         }
         return array
     }
 
     func addNewTodo(str: String?) {
         let todo = TodoModel()
-        todo.text = str
+        todo.text = str!
         todoDataStore.addNewTodo(todo: todo)
     }
 

@@ -46,6 +46,7 @@
 		33FDD32B24B0D16C00FCBF89 /* SwinjectStoryboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33FDD31C24B0BF8F00FCBF89 /* SwinjectStoryboard.framework */; };
 		33FDD33024B0D1DB00FCBF89 /* Swinject.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 33FDD31B24B0BF8F00FCBF89 /* Swinject.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		33FDD33124B0D1DB00FCBF89 /* SwinjectStoryboard.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 33FDD31C24B0BF8F00FCBF89 /* SwinjectStoryboard.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		33FDD33324B1EDC900FCBF89 /* TodoDataStoreTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FDD33224B1EDC900FCBF89 /* TodoDataStoreTest.swift */; };
 		652A208E249C80A8008E922F /* ReadQRCodeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A208D249C80A8008E922F /* ReadQRCodeResult.swift */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +126,7 @@
 		33FDD31924B0B4B400FCBF89 /* SwinjectSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwinjectSetup.swift; sourceTree = "<group>"; };
 		33FDD31B24B0BF8F00FCBF89 /* Swinject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swinject.framework; path = Carthage/Build/iOS/Swinject.framework; sourceTree = "<group>"; };
 		33FDD31C24B0BF8F00FCBF89 /* SwinjectStoryboard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwinjectStoryboard.framework; path = Carthage/Build/iOS/SwinjectStoryboard.framework; sourceTree = "<group>"; };
+		33FDD33224B1EDC900FCBF89 /* TodoDataStoreTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDataStoreTest.swift; sourceTree = "<group>"; };
 		652A208D249C80A8008E922F /* ReadQRCodeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadQRCodeResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -298,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				33FDD30F24B0A58000FCBF89 /* ReadQRCodeRepositoryTest.swift */,
+				33FDD33224B1EDC900FCBF89 /* TodoDataStoreTest.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -568,6 +571,7 @@
 			files = (
 				33FDD31024B0A58000FCBF89 /* ReadQRCodeRepositoryTest.swift in Sources */,
 				33FDD31824B0B0BB00FCBF89 /* GeneratedMocks.swift in Sources */,
+				33FDD33324B1EDC900FCBF89 /* TodoDataStoreTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
