@@ -20,18 +20,12 @@ class QRScannerController: UIViewController {
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var qrCodeFrameView: UIView?
 
-    private let readQRCodeRepository = ReadQRCodeRepositoryImp()
     private let disposeBag = DisposeBag()
 
-    public var readQRCode: ReadQRCode?
-    public var viewModel: QRScannerViewModel?
+    var viewModel: QRScannerViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //Replace me when SwinjectStoryboard imported
-        readQRCode=ReadQRCodeImp(repository: readQRCodeRepository)
-        viewModel=QRScannerViewModel(readQRCode: readQRCode!)
 
         viewModel?.navigation
             .observeOn(MainScheduler.instance)

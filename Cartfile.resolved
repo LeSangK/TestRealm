@@ -1,2 +1,5 @@
+github "Brightify/Cuckoo" "1.4.0"
 github "ReactiveX/RxSwift" "5.1.1"
-github "realm/realm-cocoa" "v5.0.2"
+github "Swinject/Swinject" "2.6.2"
+github "Swinject/SwinjectStoryboard" "2.2.0"
+github "realm/realm-cocoa" "v5.2.0"

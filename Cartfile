@@ -1,3 +1,8 @@
 github "realm/realm-cocoa" 
 
 github "ReactiveX/RxSwift"
+
+github "Brightify/Cuckoo"
+
+github "Swinject/Swinject"==2.6.2
+github "Swinject/SwinjectStoryboard"==2.2.0

@@ -20,18 +20,13 @@ class TodoViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var scanButton: UIButton!
 
     private let disposeBag = DisposeBag()
-    private let todoRepository = TodoRepositoryImp()
 
-    public var todoAction: TodoAction?
     var viewModel: TodoViewModel?
 
     var itemList: Observable<[String]>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Replace me when SwinjectStoryboard imported
-        todoAction = TodoActionImp(repository: todoRepository)
-        viewModel = TodoViewModel(todoAction: todoAction!)
 
         viewModel?.navigation
             .observeOn(MainScheduler.init())

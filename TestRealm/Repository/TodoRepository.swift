@@ -30,14 +30,14 @@ public protocol TodoRepository {
     func deleteAll()
 }
 
-public class TodoRepositoryImp: TodoRepository {
+class TodoRepositoryImp: TodoRepository {
     private let todoDataStore: TodoDataStore
 
-    init() {
-        self.todoDataStore = TodoDataStoreImp()
+    init(todoDataStore: TodoDataStore) {
+        self.todoDataStore = todoDataStore
     }
 
-    public func fetchTodos() -> [String]! {
+    func fetchTodos() -> [String]! {
         guard let results = todoDataStore.fetchTodo() else {
             return []
         }
@@ -51,19 +51,19 @@ public class TodoRepositoryImp: TodoRepository {
         return array
     }
 
-    public func addNewTodo(str: String?) {
+    func addNewTodo(str: String?) {
         let todo = TodoModel()
         todo.text = str
         todoDataStore.addNewTodo(todo: todo)
     }
 
-    public func deleteTodo(index: Int) {
+    func deleteTodo(index: Int) {
         let results = todoDataStore.fetchTodo()
         let todo = results![index]
         todoDataStore.deleteTodo(todo: todo)
     }
 
-    public func deleteAll() {
+    func deleteAll() {
         todoDataStore.clear()
     }
 

@@ -37,8 +37,15 @@
 		3373526124822C3E00DB15B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3373525F24822C3E00DB15B6 /* Main.storyboard */; };
 		3373526324822C3F00DB15B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3373526224822C3F00DB15B6 /* Assets.xcassets */; };
 		3373526624822C3F00DB15B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3373526424822C3F00DB15B6 /* LaunchScreen.storyboard */; };
-		3373527124822C3F00DB15B6 /* TestRealmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3373527024822C3F00DB15B6 /* TestRealmTests.swift */; };
 		3373527C24822C4000DB15B6 /* TestRealmUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3373527B24822C4000DB15B6 /* TestRealmUITests.swift */; };
+		33FDD31024B0A58000FCBF89 /* ReadQRCodeRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FDD30F24B0A58000FCBF89 /* ReadQRCodeRepositoryTest.swift */; };
+		33FDD31424B0A66C00FCBF89 /* Cuckoo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33FDD31324B0A66C00FCBF89 /* Cuckoo.framework */; };
+		33FDD31824B0B0BB00FCBF89 /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FDD31724B0B0BB00FCBF89 /* GeneratedMocks.swift */; };
+		33FDD32924B0CD3500FCBF89 /* SwinjectSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FDD31924B0B4B400FCBF89 /* SwinjectSetup.swift */; };
+		33FDD32A24B0D15600FCBF89 /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33FDD31B24B0BF8F00FCBF89 /* Swinject.framework */; };
+		33FDD32B24B0D16C00FCBF89 /* SwinjectStoryboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33FDD31C24B0BF8F00FCBF89 /* SwinjectStoryboard.framework */; };
+		33FDD33024B0D1DB00FCBF89 /* Swinject.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 33FDD31B24B0BF8F00FCBF89 /* Swinject.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		33FDD33124B0D1DB00FCBF89 /* SwinjectStoryboard.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 33FDD31C24B0BF8F00FCBF89 /* SwinjectStoryboard.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		652A208E249C80A8008E922F /* ReadQRCodeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A208D249C80A8008E922F /* ReadQRCodeResult.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +73,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				33FDD33024B0D1DB00FCBF89 /* Swinject.framework in Embed Frameworks */,
+				33FDD33124B0D1DB00FCBF89 /* SwinjectStoryboard.framework in Embed Frameworks */,
 				3330FD6B248C7A880057B326 /* RxCocoa.framework in Embed Frameworks */,
 				3330FD61248646030057B326 /* RealmSwift.framework in Embed Frameworks */,
 				3330FD5F248646030057B326 /* Realm.framework in Embed Frameworks */,
@@ -106,11 +115,16 @@
 		3373526524822C3F00DB15B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3373526724822C3F00DB15B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3373526C24822C3F00DB15B6 /* TestRealmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestRealmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3373527024822C3F00DB15B6 /* TestRealmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRealmTests.swift; sourceTree = "<group>"; };
 		3373527224822C3F00DB15B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3373527724822C4000DB15B6 /* TestRealmUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestRealmUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3373527B24822C4000DB15B6 /* TestRealmUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRealmUITests.swift; sourceTree = "<group>"; };
 		3373527D24822C4000DB15B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33FDD30F24B0A58000FCBF89 /* ReadQRCodeRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadQRCodeRepositoryTest.swift; sourceTree = "<group>"; };
+		33FDD31324B0A66C00FCBF89 /* Cuckoo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cuckoo.framework; path = Carthage/Build/iOS/Cuckoo.framework; sourceTree = "<group>"; };
+		33FDD31724B0B0BB00FCBF89 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
+		33FDD31924B0B4B400FCBF89 /* SwinjectSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwinjectSetup.swift; sourceTree = "<group>"; };
+		33FDD31B24B0BF8F00FCBF89 /* Swinject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swinject.framework; path = Carthage/Build/iOS/Swinject.framework; sourceTree = "<group>"; };
+		33FDD31C24B0BF8F00FCBF89 /* SwinjectStoryboard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwinjectStoryboard.framework; path = Carthage/Build/iOS/SwinjectStoryboard.framework; sourceTree = "<group>"; };
 		652A208D249C80A8008E922F /* ReadQRCodeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadQRCodeResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +133,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33FDD32B24B0D16C00FCBF89 /* SwinjectStoryboard.framework in Frameworks */,
+				33FDD32A24B0D15600FCBF89 /* Swinject.framework in Frameworks */,
 				3330FD6A248C7A880057B326 /* RxCocoa.framework in Frameworks */,
 				3330FD60248646030057B326 /* RealmSwift.framework in Frameworks */,
 				3330FD5E248646030057B326 /* Realm.framework in Frameworks */,
@@ -131,6 +147,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33FDD31424B0A66C00FCBF89 /* Cuckoo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +164,9 @@
 		3330FD5B248646030057B326 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				33FDD31B24B0BF8F00FCBF89 /* Swinject.framework */,
+				33FDD31C24B0BF8F00FCBF89 /* SwinjectStoryboard.framework */,
+				33FDD31324B0A66C00FCBF89 /* Cuckoo.framework */,
 				3330FD6C248C7B2E0057B326 /* RxRelay.framework */,
 				3330FD69248C7A880057B326 /* RxCocoa.framework */,
 				3330FD66248C78620057B326 /* RxSwift.framework */,
@@ -246,6 +266,7 @@
 				336D2A50249DB28D00FB0834 /* Repository */,
 				3373525924822C3E00DB15B6 /* AppDelegate.swift */,
 				3373525B24822C3E00DB15B6 /* SceneDelegate.swift */,
+				33FDD31924B0B4B400FCBF89 /* SwinjectSetup.swift */,
 				3373525F24822C3E00DB15B6 /* Main.storyboard */,
 				3373526224822C3F00DB15B6 /* Assets.xcassets */,
 				3373526424822C3F00DB15B6 /* LaunchScreen.storyboard */,
@@ -257,7 +278,8 @@
 		3373526F24822C3F00DB15B6 /* TestRealmTests */ = {
 			isa = PBXGroup;
 			children = (
-				3373527024822C3F00DB15B6 /* TestRealmTests.swift */,
+				33FDD31724B0B0BB00FCBF89 /* GeneratedMocks.swift */,
+				33FDD30D24B0A50100FCBF89 /* Repository */,
 				3373527224822C3F00DB15B6 /* Info.plist */,
 			);
 			path = TestRealmTests;
@@ -270,6 +292,14 @@
 				3373527D24822C4000DB15B6 /* Info.plist */,
 			);
 			path = TestRealmUITests;
+			sourceTree = "<group>";
+		};
+		33FDD30D24B0A50100FCBF89 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				33FDD30F24B0A58000FCBF89 /* ReadQRCodeRepositoryTest.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,9 +329,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3373528324822C4000DB15B6 /* Build configuration list for PBXNativeTarget "TestRealmTests" */;
 			buildPhases = (
+				33FDD31124B0A59B00FCBF89 /* Run Script */,
 				3373526824822C3F00DB15B6 /* Sources */,
 				3373526924822C3F00DB15B6 /* Frameworks */,
 				3373526A24822C3F00DB15B6 /* Resources */,
+				33FDD31224B0A63700FCBF89 /* ShellScript */,
+				33FDD31524B0A94C00FCBF89 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -346,6 +379,7 @@
 					};
 					3373526B24822C3F00DB15B6 = {
 						CreatedOnToolsVersion = 11.3;
+						LastSwiftMigration = 1150;
 						TestTargetID = 3373525524822C3E00DB15B6;
 					};
 					3373527624822C4000DB15B6 = {
@@ -415,6 +449,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Swinject.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwinjectStoryboard.framework",
 			);
 			outputFileListPaths = (
 			);
@@ -423,8 +459,64 @@
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+			showEnvVarsInLog = 0;
 		};
 		3330FD72248CDDAF0057B326 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint autocorrect --format\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		33FDD31124B0A59B00FCBF89 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/TestRealm/Repository/ReadQRCodeRepositoryTest.swift",
+				"$(SRCROOT)/TestRealm/TodoDataStore/TodoDataStore.swift",
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "OUTPUT_FILE=\"$PROJECT_DIR/TestRealmTests/GeneratedMocks.swift\"\n\n\"Carthage/Checkouts/Cuckoo/run\" generate --testable \"TestRealm\" --output \"${OUTPUT_FILE}\"\n";
+		};
+		33FDD31224B0A63700FCBF89 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Cuckoo.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		33FDD31524B0A94C00FCBF89 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -454,6 +546,7 @@
 				3373525E24822C3E00DB15B6 /* TodoViewController.swift in Sources */,
 				3350141C24A0A37B00E626E0 /* TodoActionPresenter.swift in Sources */,
 				336D2A53249DB36200FB0834 /* ReadQRCode.swift in Sources */,
+				33FDD32924B0CD3500FCBF89 /* SwinjectSetup.swift in Sources */,
 				3350141E24A0A44800E626E0 /* TodoActionImp.swift in Sources */,
 				3330FD65248648E90057B326 /* TodoModel.swift in Sources */,
 				3373525A24822C3E00DB15B6 /* AppDelegate.swift in Sources */,
@@ -473,7 +566,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3373527124822C3F00DB15B6 /* TestRealmTests.swift in Sources */,
+				33FDD31024B0A58000FCBF89 /* ReadQRCodeRepositoryTest.swift in Sources */,
+				33FDD31824B0B0BB00FCBF89 /* GeneratedMocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -683,8 +777,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BJC2B2NW2W;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = TestRealmTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -694,6 +793,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.raku.TestRealmTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestRealm.app/TestRealm";
@@ -705,8 +806,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BJC2B2NW2W;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = TestRealmTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -716,6 +822,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.raku.TestRealmTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestRealm.app/TestRealm";

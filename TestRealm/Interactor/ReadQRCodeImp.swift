@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class ReadQRCodeImp: ReadQRCode {
+class ReadQRCodeImp: ReadQRCode {
     private let repository: ReadQRCodeRepository
     private var presenter: ReadQRCodePresenter?
 
@@ -16,12 +16,12 @@ public class ReadQRCodeImp: ReadQRCode {
         self.repository=repository
     }
 
-    public func startReadQRResult(readQRResult: ReadQRResult) {
+    func startReadQRResult(readQRResult: ReadQRResult) {
         repository.addNewTodo(result: readQRResult)
         presenter?.notifyQRCodeResult(code: readQRResult.resultCode)
     }
 
-    public func setPresenter(presenter: ReadQRCodePresenter) {
+    func setPresenter(presenter: ReadQRCodePresenter) {
         self.presenter=presenter
     }
 

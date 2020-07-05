@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class TodoActionImp: TodoAction {
+class TodoActionImp: TodoAction {
     private let repository: TodoRepository
     private var presenter: TodoActionPresenter?
 
@@ -16,23 +16,23 @@ public class TodoActionImp: TodoAction {
         self.repository=repository
     }
 
-    public func fetchTodos() {
+    func fetchTodos() {
         let todos = repository.fetchTodos()
         presenter?.notifyFetchTodos(results: todos!)
     }
 
-    public func addNewTodo(str: String?) {
+    func addNewTodo(str: String?) {
         repository.addNewTodo(str: str)
         presenter?.notifyResetTextField()
         presenter?.notifyReloadTable()
     }
 
-    public func deleteTodo(index: Int) {
+    func deleteTodo(index: Int) {
         repository.deleteTodo(index: index)
         presenter?.notifyReloadTable()
     }
 
-    public func deleteAll() {
+    func deleteAll() {
         repository.deleteAll()
         presenter?.notifyReloadTable()
     }

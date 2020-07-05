@@ -16,14 +16,14 @@ public protocol ReadQRCodeRepository {
     func addNewTodo(result: ReadQRResult)
 }
 
-public class ReadQRCodeRepositoryImp: ReadQRCodeRepository {
+class ReadQRCodeRepositoryImp: ReadQRCodeRepository {
     private let todoDataStore: TodoDataStore
 
-    init() {
-        self.todoDataStore=TodoDataStoreImp()
+    init(todoDataStore: TodoDataStore) {
+        self.todoDataStore=todoDataStore
     }
 
-    public func addNewTodo(result: ReadQRResult) {
+    func addNewTodo(result: ReadQRResult) {
         if result.resultCode == .ok {
             let todo = TodoModel()
             todo.text="companyId:\(result.companyId), siteId:\(result.siteId), clinetId:\(result.clientId)"
