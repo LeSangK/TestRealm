@@ -22,9 +22,36 @@ class QRScannerViewModel: BaseViewModel {
     ///- Parameters:
     ///  - resultString :metaOutput valueString
     ///  - errorCode : ok, fail, noQrCode, notSupport, cancel
-    func startReadQRCode(readQRResult: ReadQRResult) {
-        readQRCode.setPresenter(presenter: self)
-        readQRCode.startReadQRResult(readQRResult: readQRResult)
+    func saveQrResult(resultString: String?, errorCode: ReadQRResultCode?) {
+        QRResultHandler(resultString: resultString, errorCode: errorCode) { result in
+            readQRCode.setPresenter(presenter: self)
+            readQRCode.startReadQRResult(readQRResult: result)
+        }
+    }
+
+    private func QRResultHandler(resultString: String?, errorCode: ReadQRResultCode?, completionHandler: (ReadQRResult) -> Void) {
+
+        guard errorCode != .cancel else {
+            completionHandler(ReadQRResult(resultCode: .cancel, text: ""))
+            return
+        }
+
+        guard errorCode != .notSupport else {
+            completionHandler(ReadQRResult(resultCode: .notSupport, text: ""))
+            return
+        }
+
+        guard errorCode != .noQrCode else {
+            completionHandler(ReadQRResult(resultCode: .noQrCode, text: ""))
+            return
+        }
+
+        guard let s = resultString else {
+            completionHandler(ReadQRResult(resultCode: .fail, text: ""))
+            return
+        }
+
+        completionHandler(ReadQRResult(resultCode: .ok, text: s))
     }
 
 }

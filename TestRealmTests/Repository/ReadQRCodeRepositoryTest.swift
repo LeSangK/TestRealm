@@ -16,9 +16,9 @@ class ReadQRCodeRepositoryTest: XCTestCase {
 
     func testSaveSuccess() {
         let expectedResult = TodoModel()
-        expectedResult.text="companyId:2, siteId:3, clinetId:4"
+        expectedResult.text="hello QR"
 
-        let result = ReadQRResult(resultCode: .ok, companyId: "2", siteId: "3", clientId: "4", clientSecret: "5")
+        let result = ReadQRResult(resultCode: .ok, text: "hello QR")
 
         let mockTodoDataStore = MockTodoDataStore()
         stub(mockTodoDataStore) { mock in

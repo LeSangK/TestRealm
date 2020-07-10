@@ -26,7 +26,7 @@ class ReadQRCodeRepositoryImp: ReadQRCodeRepository {
     func addNewTodo(result: ReadQRResult) {
         if result.resultCode == .ok {
             let todo = TodoModel()
-            todo.text="companyId:\(result.companyId), siteId:\(result.siteId), clinetId:\(result.clientId)"
+            todo.text=result.text
             todoDataStore.addNewTodo(todo: todo)
         }
     }

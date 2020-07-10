@@ -51,49 +51,38 @@ class QRScannerController: UIViewController {
         //キャンセルボタン
         cancelButton.rx.tap
             .subscribe(onNext: {[weak self]_ in
-                let readQRResult = self?.QRResultHandler(resultString: nil, errorCode: .cancel)
-                self?.viewModel?.startReadQRCode(readQRResult: readQRResult!)
+                self?.viewModel?.saveQrResult(resultString: nil, errorCode: .cancel)
             })
             .disposed(by: disposeBag)
 
-        //カメラを初期化
-        self.initializeCamera()
+        initializeCamera()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+
+        if AVCaptureDevice.authorizationStatus(for: .video) == .denied {
+            self.dialogForConfiguration(title: "Camera Permission", message: "Please Permiss the camera access ")
+        }
 
     }
 
     // MARK: - Helper methods
 
-    func showMessage(event: QRScannerViewModel.ShowMessage) {
+    private func showMessage(event: QRScannerViewModel.ShowMessage) {
         self.messageLabel.text=event.message
     }
 
-    func QRResultHandler(resultString: String?, errorCode: ReadQRResultCode?) -> ReadQRResult {
-
-        guard errorCode != .cancel else {
-            return ReadQRResult(resultCode: ReadQRResultCode.cancel, companyId: "", siteId: "", clientId: "", clientSecret: "")
+    private func dialogForConfiguration(title: String, message: String?) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .cancel)
+        alertController.addAction(okAction)
+        let settingsAction = UIAlertAction(title: "設定", style: .default) { _ in
+            let url = URL(string: UIApplication.openSettingsURLString)
+            UIApplication.shared.open(url!)
         }
-
-        guard errorCode != .notSupport else {
-            return ReadQRResult(resultCode: ReadQRResultCode.notSupport, companyId: "", siteId: "", clientId: "", clientSecret: "")
-        }
-
-        guard errorCode != .noQrCode else {
-            return ReadQRResult(resultCode: ReadQRResultCode.noQrCode, companyId: "", siteId: "", clientId: "", clientSecret: "")
-        }
-
-        do {
-            let jsonDecoder = JSONDecoder()
-
-            let result = try jsonDecoder.decode(QRResult.self, from: resultString!.data(using: .utf8)!)
-
-            return ReadQRResult(resultCode: ReadQRResultCode.ok, companyId: result.companyId, siteId: result.siteId, clientId: result.clientId, clientSecret: result.clientSecret)
-
-        } catch {
-            print(error)
-            return ReadQRResult(resultCode: ReadQRResultCode.fail, companyId: "", siteId: "", clientId: "", clientSecret: "")
-        }
+        alertController.addAction(settingsAction)
+        self.present(alertController, animated: true, completion: nil)
     }
-
 }
 
 // MARK: - MetadataOutput
@@ -101,10 +90,9 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
 
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         // Check if the metadataObjects array is not nil and it contains at least one object.
-        if metadataObjects.count == 0 {
+        guard metadataObjects.count != 0 else {
             qrCodeFrameView?.frame = CGRect.zero
-            let readQRResult = QRResultHandler(resultString: nil, errorCode: .noQrCode)
-            viewModel?.startReadQRCode(readQRResult: readQRResult)
+            viewModel?.saveQrResult(resultString: nil, errorCode: .noQrCode)
             return
         }
 
@@ -112,15 +100,11 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
         // swiftlint:disable force_cast
         let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
 
-        if AVMetadataObject.ObjectType.qr==metadataObj.type {
-            // If the found metadata is equal to the QR code metadata (or barcode) then update the status label's text and set the bounds
-            let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
-            qrCodeFrameView?.frame = barCodeObject!.bounds
+        // If the found metadata is equal to the QR code metadata (or barcode) then update the status label's text and set the bounds
+        let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
+        qrCodeFrameView?.frame = barCodeObject!.bounds
 
-            let readQRResult = QRResultHandler(resultString: metadataObj.stringValue, errorCode: .ok)
-
-            viewModel?.startReadQRCode(readQRResult: readQRResult)
-        }
+        viewModel?.saveQrResult(resultString: metadataObj.stringValue, errorCode: nil)
 
     }
 }
@@ -131,8 +115,7 @@ extension QRScannerController {
     func initializeCamera() {
         // Get the back-facing camera for capturing videos
         guard let captureDevice = AVCaptureDevice.default(for: AVMediaType.video) else {
-            let readQRResult = QRResultHandler(resultString: nil, errorCode: .notSupport)
-            viewModel?.startReadQRCode(readQRResult: readQRResult)
+            viewModel?.saveQrResult(resultString: nil, errorCode: .notSupport)
             return
         }
 
@@ -181,4 +164,8 @@ extension QRScannerController {
             view.bringSubviewToFront(qrCodeFrameView)
         }
     }
+}
+
+extension QRScannerController {
+
 }
